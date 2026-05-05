@@ -40,6 +40,9 @@ Isaac_Sim_Tutorials/
 Docs/*.pdf
 Actuators/humanoid-actuator-research.pdf
 
+# Local-only docs (kept on disk, not published)
+Docs/business-case.md
+
 # Claude Code config (local settings, not project-relevant)
 .claude/
 
