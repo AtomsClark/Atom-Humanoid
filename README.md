@@ -1,6 +1,6 @@
 # Atom Humanoid
 
-R&D repository for the **Atom Humanoid** — a 16-DoF, 5'6" (168 cm) privacy-first consumer humanoid robot powered by RS03 actuators and trained in NVIDIA Isaac Lab.
+R&D repository for the **Atom Humanoid** — a 16-DoF, 5'6" (168 cm) humanoid robot powered by RS03 actuators and trained in NVIDIA Isaac Lab.
 
 ## What's in here
 
@@ -10,7 +10,7 @@ R&D repository for the **Atom Humanoid** — a 16-DoF, 5'6" (168 cm) privacy-fir
 | `atom_isaaclab/` | Isaac Lab RL training package — env configs, reward functions, PPO hyperparameters, training/play scripts |
 | `Actuators/` | RS02/RS03 specs and user manuals |
 | `Robot_Arm/` | RS02-actuated arm bringup — CAN motor control scripts |
-| `Docs/` | Kinematics specs, hardware notes, joint-limits comparison, business case |
+| `Docs/` | Kinematics specs, hardware notes, joint-limits comparison, early planning |
 | `Training/` | Training log (`training_log.md`) and retraining plan |
 | `Scripts/` | Utility scripts (`md_to_pdf.py`) |
 
