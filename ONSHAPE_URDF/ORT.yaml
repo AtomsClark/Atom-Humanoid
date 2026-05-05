@@ -1,0 +1,320 @@
+logging:
+  mode: default
+  console_level: INFO
+  file_level: DEBUG
+  file_path: onshape_toolkit.log
+  clear_existing_handlers: true
+  delay_file_creation: false
+client:
+  env: .env
+  base_url: https://cad.onshape.com
+document:
+  url: https://cad.onshape.com/documents/acf2ac35a525e41fdf671576/w/834211a204eb052abf64f55a/e/46d07101bbeb1f9346490291
+  base_url: https://cad.onshape.com
+  did: acf2ac35a525e41fdf671576
+  wtype: w
+  wid: 834211a204eb052abf64f55a
+  eid: 46d07101bbeb1f9346490291
+  name: Atom_Humanoid_V0
+assembly:
+  element_id: 46d07101bbeb1f9346490291
+  configuration: default
+  log_response: true
+  with_meta_data: true
+cad:
+  max_depth: 1
+kinematics:
+  use_user_defined_root: true
+robot:
+  name: Atom_Humanoid_V0.7
+  type: urdf
+  fetch_mass_properties: true
+export:
+  file_path: Atom_Humanoid_V0.7/Atom_Humanoid_V0.7.urdf
+  download_assets: true
+  mesh_dir: Atom_Humanoid_V0.7/meshes
+names:
+  parts:
+    Torso_With_Motors_1_Torso_1:
+      original: Torso <1>
+      name: Torso_With_Motors_1_Torso_1
+    Torso_With_Motors_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Torso_With_Motors_1_FullMotor_1
+    Torso_With_Motors_1_FullMotor_2:
+      original: FullMotor <2>
+      name: Torso_With_Motors_1_FullMotor_2
+    Torso_With_Motors_1_FullMotor_3:
+      original: FullMotor <3>
+      name: Torso_With_Motors_1_FullMotor_3
+    Torso_With_Motors_1_FullMotor_4:
+      original: FullMotor <4>
+      name: Torso_With_Motors_1_FullMotor_4
+    Lower_Arm_Right_1_Lower_Arm_Right_1:
+      original: Lower_Arm_Right <1>
+      name: Lower_Arm_Right_1_Lower_Arm_Right_1
+    Mid_Arm_Right_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Mid_Arm_Right_With_Motor_1_FullMotor_1
+    Mid_Arm_Right_With_Motor_1_Mid_Arm_Right_1:
+      original: Mid_Arm_Right <1>
+      name: Mid_Arm_Right_With_Motor_1_Mid_Arm_Right_1
+    Shoulder_Right_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Shoulder_Right_With_Motor_1_FullMotor_1
+    Shoulder_Right_With_Motor_1_Shoulder_Right_1:
+      original: Shoulder_Right <1>
+      name: Shoulder_Right_With_Motor_1_Shoulder_Right_1
+    Upper_Arm_Right_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Upper_Arm_Right_With_Motor_1_FullMotor_1
+    Upper_Arm_Right_With_Motor_1_Upper_Arm_Right_1:
+      original: Upper_Arm_Right <1>
+      name: Upper_Arm_Right_With_Motor_1_Upper_Arm_Right_1
+    Lower_Arm_Left_1_Lower_Arm_Left_1:
+      original: Lower_Arm_Left <1>
+      name: Lower_Arm_Left_1_Lower_Arm_Left_1
+    Mid_Arm_Left_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Mid_Arm_Left_With_Motor_1_FullMotor_1
+    Mid_Arm_Left_With_Motor_1_Mid_Arm_Left_1:
+      original: Mid_Arm_Left <1>
+      name: Mid_Arm_Left_With_Motor_1_Mid_Arm_Left_1
+    Shoulder_Left_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Shoulder_Left_With_Motor_1_FullMotor_1
+    Shoulder_Left_With_Motor_1_Shoulder_Left_1:
+      original: Shoulder_Left <1>
+      name: Shoulder_Left_With_Motor_1_Shoulder_Left_1
+    Upper_Arm_Left_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Upper_Arm_Left_With_Motor_1_FullMotor_1
+    Upper_Arm_Left_With_Motor_1_Upper_Arm_Left_1:
+      original: Upper_Arm_Left <1>
+      name: Upper_Arm_Left_With_Motor_1_Upper_Arm_Left_1
+    Shin_Right_With_Motor_1_Ankle_Linkage_Right_1:
+      original: Ankle_Linkage_Right <1>
+      name: Shin_Right_With_Motor_1_Ankle_Linkage_Right_1
+    Shin_Right_With_Motor_1_Ankle_Motor_Coupling_Right_1:
+      original: Ankle_Motor_Coupling_Right <1>
+      name: Shin_Right_With_Motor_1_Ankle_Motor_Coupling_Right_1
+    Shin_Right_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Shin_Right_With_Motor_1_FullMotor_1
+    Shin_Right_With_Motor_1_Shin_Right_1:
+      original: Shin_Right <1>
+      name: Shin_Right_With_Motor_1_Shin_Right_1
+    Femur_Right_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Femur_Right_With_Motor_1_FullMotor_1
+    Femur_Right_With_Motor_1_Femur_Right_1:
+      original: Femur_Right <1>
+      name: Femur_Right_With_Motor_1_Femur_Right_1
+    Foot_Right_1:
+      original: Foot_Right <1>
+      name: Foot_Right_1
+    Hip_Right_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Hip_Right_With_Motor_1_FullMotor_1
+    Hip_Right_With_Motor_1_Hip_Right_1:
+      original: Hip_Right <1>
+      name: Hip_Right_With_Motor_1_Hip_Right_1
+    Shin_Left_With_Motor_1_Ankle_Linkage_Left_1:
+      original: Ankle_Linkage_Left <1>
+      name: Shin_Left_With_Motor_1_Ankle_Linkage_Left_1
+    Shin_Left_With_Motor_1_Ankle_Motor_Coupling_Left_1:
+      original: Ankle_Motor_Coupling_Left <1>
+      name: Shin_Left_With_Motor_1_Ankle_Motor_Coupling_Left_1
+    Shin_Left_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Shin_Left_With_Motor_1_FullMotor_1
+    Shin_Left_With_Motor_1_Shin_Left_1:
+      original: Shin_Left <1>
+      name: Shin_Left_With_Motor_1_Shin_Left_1
+    Femur_Left_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Femur_Left_With_Motor_1_FullMotor_1
+    Femur_Left_With_Motor_1_Femur_Left_1:
+      original: Femur_Left <1>
+      name: Femur_Left_With_Motor_1_Femur_Left_1
+    Foot_Left_1:
+      original: Foot_Left <1>
+      name: Foot_Left_1
+    Hip_Left_With_Motor_1_FullMotor_1:
+      original: FullMotor <1>
+      name: Hip_Left_With_Motor_1_FullMotor_1
+    Hip_Left_With_Motor_1_Hip_Left_1:
+      original: Hip_Left <1>
+      name: Hip_Left_With_Motor_1_Hip_Left_1
+    frame_IMU_1_base_1:
+      original: base <1>
+      name: frame_IMU_1_base_1
+    frame_IMU_1_X_1:
+      original: X <1>
+      name: frame_IMU_1_X_1
+    frame_IMU_1_Y_1:
+      original: Y <1>
+      name: frame_IMU_1_Y_1
+    frame_IMU_1_Z_1:
+      original: Z <1>
+      name: frame_IMU_1_Z_1
+    frame_hand_left_1_base_1:
+      original: base <1>
+      name: frame_hand_left_1_base_1
+    frame_hand_left_1_X_1:
+      original: X <1>
+      name: frame_hand_left_1_X_1
+    frame_hand_left_1_Y_1:
+      original: Y <1>
+      name: frame_hand_left_1_Y_1
+    frame_hand_left_1_Z_1:
+      original: Z <1>
+      name: frame_hand_left_1_Z_1
+    frame_foot_left_1_base_1:
+      original: base <1>
+      name: frame_foot_left_1_base_1
+    frame_foot_left_1_X_1:
+      original: X <1>
+      name: frame_foot_left_1_X_1
+    frame_foot_left_1_Y_1:
+      original: Y <1>
+      name: frame_foot_left_1_Y_1
+    frame_foot_left_1_Z_1:
+      original: Z <1>
+      name: frame_foot_left_1_Z_1
+    frame_foot_right_1_base_1:
+      original: base <1>
+      name: frame_foot_right_1_base_1
+    frame_foot_right_1_X_1:
+      original: X <1>
+      name: frame_foot_right_1_X_1
+    frame_foot_right_1_Y_1:
+      original: Y <1>
+      name: frame_foot_right_1_Y_1
+    frame_foot_right_1_Z_1:
+      original: Z <1>
+      name: frame_foot_right_1_Z_1
+    frame_hand_right_1_base_1:
+      original: base <1>
+      name: frame_hand_right_1_base_1
+    frame_hand_right_1_X_1:
+      original: X <1>
+      name: frame_hand_right_1_X_1
+    frame_hand_right_1_Y_1:
+      original: Y <1>
+      name: frame_hand_right_1_Y_1
+    frame_hand_right_1_Z_1:
+      original: Z <1>
+      name: frame_hand_right_1_Z_1
+  mates:
+    frame_foot_left:
+      original: frame_foot_left
+      name: frame_foot_left
+    frame_IMU:
+      original: frame_IMU
+      name: frame_IMU
+    frame_hand_left:
+      original: frame_hand_left
+      name: frame_hand_left
+    frame_hand_right:
+      original: frame_hand_right
+      name: frame_hand_right
+    frame_foot_right:
+      original: frame_foot_right
+      name: frame_foot_right
+    dof_knee_pitch_left:
+      original: dof_knee_pitch_left
+      name: dof_knee_pitch_left
+      limits:
+        min: 0.0
+        max: 2.792526803190927
+    dof_knee_pitch_right:
+      original: dof_knee_pitch_right
+      name: dof_knee_pitch_right
+      limits:
+        min: -2.792526803190927
+        max: 0.0
+    dof_hip_roll_left:
+      original: dof_hip_roll_left
+      name: dof_hip_roll_left
+      limits:
+        min: -1.0471975511965976
+        max: 0.5235987755982988
+    dof_hip_roll_right:
+      original: dof_hip_roll_right
+      name: dof_hip_roll_right
+      limits:
+        min: -0.5235987755982988
+        max: 1.0471975511965976
+    dof_hip_pitch_left:
+      original: dof_hip_pitch_left
+      name: dof_hip_pitch_left
+      limits:
+        min: -0.5235987755982988
+        max: 2.530727415391778
+    dof_hip_pitch_right:
+      original: dof_hip_pitch_right
+      name: dof_hip_pitch_right
+      limits:
+        min: -2.530727415391778
+        max: 0.5235987755982988
+    dof_ankle_pitch_left:
+      original: dof_ankle_pitch_left
+      name: dof_ankle_pitch_left
+      limits:
+        min: -1.2217304763960306
+        max: 0.5235987755982988
+    dof_ankle_pitch_right:
+      original: dof_ankle_pitch_right
+      name: dof_ankle_pitch_right
+      limits:
+        min: -1.2217304763960306
+        max: 0.5235987755982988
+    dof_shoulder_pitch_left:
+      original: dof_shoulder_pitch_left
+      name: dof_shoulder_pitch_left
+      limits:
+        min: -3.141592653589793
+        max: 1.3962634015954636
+    dof_shoulder_pitch_right:
+      original: dof_shoulder_pitch_right
+      name: dof_shoulder_pitch_right
+      limits:
+        min: -3.141592653589793
+        max: 1.3962634015954636
+    dof_shoulder_roll_left:
+      original: dof_shoulder_roll_left
+      name: dof_shoulder_roll_left
+      limits:
+        min: 0.0
+        max: 3.141592653589793
+    dof_shoulder_roll_right:
+      original: dof_shoulder_roll_right
+      name: dof_shoulder_roll_right
+      limits:
+        min: -3.141592653589793
+        max: 0.0
+    dof_arm_upper_yaw_left:
+      original: dof_arm_upper_yaw_left
+      name: dof_arm_upper_yaw_left
+      limits:
+        min: -1.5707963267948966
+        max: 1.7453292519943295
+    dof_arm_upper_yaw_right:
+      original: dof_arm_upper_yaw_right
+      name: dof_arm_upper_yaw_right
+      limits:
+        min: -1.7453292519943295
+        max: 1.5707963267948966
+    dof_elbow_pitch_left:
+      original: dof_elbow_pitch_left
+      name: dof_elbow_pitch_left
+      limits:
+        min: 0.0
+        max: 2.792526803190927
+    dof_elbow_pitch_right:
+      original: dof_elbow_pitch_right
+      name: dof_elbow_pitch_right
+      limits:
+        min: -2.792526803190927
+        max: 0.0

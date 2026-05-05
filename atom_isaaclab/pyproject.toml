@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools", "wheel", "toml"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atom_isaaclab"
+version = "0.1.0"
+description = "Isaac Lab RL environment for the Atom Humanoid robot"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.setuptools.packages.find]
+where = ["source"]
+include = ["atom_isaaclab*"]

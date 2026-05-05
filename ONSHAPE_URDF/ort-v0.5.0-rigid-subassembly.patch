@@ -1,0 +1,86 @@
+--- /tmp/ort-upstream/onshape_robotics_toolkit-0.5.0/onshape_robotics_toolkit/parse.py	2020-02-01 16:00:00.000000000 -0800
++++ /home/atoms/miniconda3/lib/python3.13/site-packages/onshape_robotics_toolkit/parse.py	2026-03-04 09:34:40.097512979 -0800
+@@ -1246,6 +1246,11 @@
+                 continue
+ 
+             for pathkey in pathkeys:
++                # Skip pathkeys that are sub-assemblies — they are not leaf parts and will
++                # receive a synthetic Part object in the rigid-assembly loop below.
++                if pathkey in self.subassemblies:
++                    continue
++
+                 self.parts[pathkey] = copy.deepcopy(part)  # Avoid mutating original data
+                 self.parts[pathkey].worldToPartTF = MatedCS.from_tf(self.occurrences[pathkey].tf)
+ 
+@@ -1280,7 +1285,36 @@
+ 
+                         asyncio.run(self.fetch_occurrences_for_subassemblies(self._client))
+ 
+-                    part_pose_wrt_rigid_root = self.subassemblies[rigid_root].RootOccurrences[pathkey]  # type: ignore[index]
++                    _root_occs = self.subassemblies[rigid_root].RootOccurrences
++                    if pathkey not in _root_occs:
++                        # Part not returned by sub-assembly fetch (e.g. FullMotors at depth > max_depth).
++                        # Derive the rigid-assembly-to-part transform from global world occurrence transforms.
++                        if not _root_occs or pathkey not in self.occurrences:
++                            logger.debug(
++                                f"PathKey {pathkey} not found in RootOccurrences of {rigid_root} "
++                                "and cannot derive TF — skipping"
++                            )
++                            continue
++                        ref_key, ref_occ = next(iter(_root_occs.items()))
++                        if ref_key not in self.occurrences:
++                            logger.debug(f"Reference key {ref_key} not in global occurrences, skipping")
++                            continue
++                        # T_rigid_to_ref: transform of ref part expressed in rigid assembly frame
++                        T_rigid_to_ref = ref_occ.tf
++                        # T_world_to_ref: world transform of the same ref part (reliable for leaf parts)
++                        T_world_to_ref = self.occurrences[ref_key].tf
++                        # Recover rigid assembly world frame
++                        T_world_to_rigid = T_world_to_ref @ np.linalg.inv(T_rigid_to_ref)
++                        # World transform of the missing part
++                        T_world_to_part = self.occurrences[pathkey].tf
++                        # Transform of missing part expressed in rigid assembly frame
++                        T_rigid_to_part = np.linalg.inv(T_world_to_rigid) @ T_world_to_part
++                        self.parts[pathkey].rigidAssemblyToPartTF = MatedCS.from_tf(tf=T_rigid_to_part)
++                        logger.debug(
++                            f"Computed rigidAssemblyToPartTF for {pathkey} via global occurrence transforms"
++                        )
++                        continue
++                    part_pose_wrt_rigid_root = _root_occs[pathkey]  # type: ignore[index]
+                     self.parts[pathkey].rigidAssemblyToPartTF = MatedCS.from_tf(tf=part_pose_wrt_rigid_root.tf)
+ 
+                     logger.debug(f"Set rigidAssemblyToPartTF for {pathkey}, with rigid assembly {rigid_root}")
+@@ -1369,7 +1403,11 @@
+                     with_mass_properties=True,
+                     log_response=False,
+                 )
++                # Build a name lookup from the sub-assembly's own instance list
++                _inst_name_by_id = {inst.id: get_sanitized_name(inst.name) for inst in _subassembly_data.instances}
++
+                 _subassembly_occurrences = _subassembly_data.occurrences
++                logger.debug(f"  [{key}] has {len(_subassembly_occurrences)} occurrences: {[tuple(o.path) for o in _subassembly_occurrences]}")
+                 for occurrence in _subassembly_occurrences:
+                     # NOTE: add sub-assembly key as prefix to get absolute path
+                     path_tuple = tuple(key.path) + tuple(occurrence.path)
+@@ -1394,7 +1432,20 @@
+                                 break
+ 
+                         if not is_suppressed_parent:
+-                            logger.warning(f"No PathKey for subassembly occurrence {occurrence.path} in {key}")
++                            # Parts inside rigid sub-assemblies at depth > max_depth are not in
++                            # keys_by_id. Register them now so rigidAssemblyToPartTF can be set.
++                            leaf_id = occurrence.path[-1]
++                            leaf_name = _inst_name_by_id.get(leaf_id)
++                            if leaf_name is not None:
++                                name_tuple = key.name_path + (leaf_name,)
++                                new_key = PathKey(path_tuple, name_tuple)
++                                self.keys_by_id[path_tuple] = new_key
++                                if subassembly.RootOccurrences is None:
++                                    subassembly.RootOccurrences = {}
++                                subassembly.RootOccurrences[new_key] = occurrence
++                                logger.debug(f"Registered depth>{self.max_depth} PathKey {new_key} for rigid assembly {key}")
++                            else:
++                                logger.warning(f"No PathKey for subassembly occurrence {occurrence.path} in {key}")
+ 
+             except Exception as e:
+                 logger.error(f"Failed to fetch root assembly for subassembly {key}: {e}")

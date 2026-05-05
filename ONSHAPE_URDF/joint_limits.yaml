@@ -1,0 +1,78 @@
+# Joint limits configuration for Atom Humanoid URDF post-processing.
+#
+# Used by set_joint_limits.py to override OnShape-exported limits.
+# All values in degrees — the script converts to radians.
+#
+# Sign convention (all joints use axis 0 0 -1 in local frame):
+#   Left-side joints: positive = forward/outward/flexion
+#   Right-side joints: mirrored (negated) from left
+#
+# Reference: H1 and K-Bot v2 limits documented in Docs/joint-limits-comparison.md
+
+# --- Legs ---
+
+dof_hip_pitch_left:
+  lower: -90.0    # backward extension (was -30°, matched to H1's -90°)
+  upper: 145.0    # forward flexion
+
+dof_hip_pitch_right:
+  lower: -145.0   # mirrored: forward flexion (negative convention)
+  upper: 90.0     # mirrored: backward extension
+
+dof_hip_roll_left:
+  lower: -60.0    # abduction (outward)
+  upper: 30.0     # adduction (inward)
+
+dof_hip_roll_right:
+  lower: -30.0    # adduction (inward)
+  upper: 60.0     # abduction (outward)
+
+dof_knee_pitch_left:
+  lower: 0.0      # full extension (was 8.6°, opened to 0°)
+  upper: 160.0    # full flexion
+
+dof_knee_pitch_right:
+  lower: -160.0   # mirrored: full flexion
+  upper: 0.0      # mirrored: full extension (was -8.6°, opened to 0°)
+
+dof_ankle_pitch_left:
+  lower: -70.0    # plantarflexion (toe down)
+  upper: 45.0     # dorsiflexion (toe up) — was 30°, widened for deep squat/stair capability
+
+dof_ankle_pitch_right:
+  lower: -45.0    # mirrored: dorsiflexion — was -30°, widened to match left
+  upper: 70.0     # mirrored: plantarflexion
+
+# --- Arms ---
+
+dof_shoulder_pitch_left:
+  lower: -80.0    # arm raised forward
+  upper: 180.0    # arm behind body
+
+dof_shoulder_pitch_right:
+  lower: -180.0   # mirrored: arm behind body
+  upper: 80.0     # mirrored: arm raised forward
+
+dof_shoulder_roll_left:
+  lower: 0.0
+  upper: 180.0
+
+dof_shoulder_roll_right:
+  lower: -180.0
+  upper: 0.0
+
+dof_arm_upper_yaw_left:
+  lower: -90.0
+  upper: 100.0
+
+dof_arm_upper_yaw_right:
+  lower: -100.0
+  upper: 90.0
+
+dof_elbow_pitch_left:
+  lower: 0.0
+  upper: 160.0
+
+dof_elbow_pitch_right:
+  lower: -160.0
+  upper: 0.0

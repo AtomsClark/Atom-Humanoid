@@ -1,0 +1,495 @@
+<?xml version='1.0' encoding='utf-8'?>
+<robot name="Atom_Humanoid_V0.7">
+  <link name="base_link" />
+  <joint name="base_to_torso" type="fixed">
+    <origin xyz="0.0 -0.075 0.0" rpy="0 0 3.14159265" />
+    <parent link="base_link" />
+    <child link="Torso_With_Motors_1" />
+  </joint>
+  <link name="Torso_With_Motors_1">
+    <visual name="Torso_With_Motors_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Torso_With_Motors_1.stl" />
+      </geometry>
+      <material name="Torso_With_Motors_1-material">
+        <color rgba="1 0 1 1" />
+      </material>
+    </visual>
+    <collision name="Torso_With_Motors_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Torso_With_Motors_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="7.917926" />
+      <inertia ixx="0.49186675" iyy="0.44607454" izz="0.092999156" ixy="4.4532899e-07" ixz="-5.1757683e-05" iyz="-4.5722522e-07" />
+      <origin xyz="8.3790132e-05 -0.075001046 0.30685246" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Hip_Left_With_Motor_1">
+    <visual name="Hip_Left_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Hip_Left_With_Motor_1.stl" />
+      </geometry>
+      <material name="Hip_Left_With_Motor_1-material">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision name="Hip_Left_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Hip_Left_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.2182705" />
+      <inertia ixx="0.0021541607" iyy="0.0016980995" izz="0.0015278821" ixy="9.1606178e-07" ixz="-7.4240302e-06" iyz="-3.5984804e-07" />
+      <origin xyz="0.00069278506 -4.0357317e-05 0.070463122" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Hip_Right_With_Motor_1">
+    <visual name="Hip_Right_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Hip_Right_With_Motor_1.stl" />
+      </geometry>
+      <material name="Hip_Right_With_Motor_1-material">
+        <color rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision name="Hip_Right_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Hip_Right_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.218273" />
+      <inertia ixx="0.0021541692" iyy="0.001698103" izz="0.0015278919" ixy="-9.2662805e-07" ixz="-7.4215043e-06" iyz="3.6343303e-07" />
+      <origin xyz="0.00069289363 4.0520865e-05 0.070463085" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Shoulder_Left_With_Motor_1">
+    <visual name="Shoulder_Left_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shoulder_Left_With_Motor_1.stl" />
+      </geometry>
+      <material name="Shoulder_Left_With_Motor_1-material">
+        <color rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision name="Shoulder_Left_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shoulder_Left_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.365668" />
+      <inertia ixx="0.0036032718" iyy="0.0030252405" izz="0.0020095227" ixy="-1.7181964e-07" ixz="5.7062826e-06" iyz="0.00010353212" />
+      <origin xyz="-0.00017643319 0.0013503077 0.085699084" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Shoulder_Right_With_Motor_1">
+    <visual name="Shoulder_Right_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shoulder_Right_With_Motor_1.stl" />
+      </geometry>
+      <material name="Shoulder_Right_With_Motor_1-material">
+        <color rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision name="Shoulder_Right_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shoulder_Right_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.3656684" />
+      <inertia ixx="0.0036032769" iyy="0.003025243" izz="0.0020095245" ixy="1.7178844e-07" ixz="5.7056172e-06" iyz="-0.00010353457" />
+      <origin xyz="-0.00017643478 -0.0013503466 0.085699048" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Femur_Left_With_Motor_1">
+    <visual name="Femur_Left_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Femur_Left_With_Motor_1.stl" />
+      </geometry>
+      <material name="Femur_Left_With_Motor_1-material">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision name="Femur_Left_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Femur_Left_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.8728393" />
+      <inertia ixx="0.039507063" iyy="0.0032529988" izz="0.038560652" ixy="-4.541731e-05" ixz="-3.1471265e-05" iyz="-0.0025002373" />
+      <origin xyz="0.0003663141 -0.29894925 -0.036225762" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Femur_Right_With_Motor_1">
+    <visual name="Femur_Right_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Femur_Right_With_Motor_1.stl" />
+      </geometry>
+      <material name="Femur_Right_With_Motor_1-material">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision name="Femur_Right_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Femur_Right_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.8728116" />
+      <inertia ixx="0.03950636" iyy="0.003252915" izz="0.038559953" ixy="4.5177109e-05" ixz="3.139237e-05" iyz="-0.0025000301" />
+      <origin xyz="-0.0003653476 -0.29895088 -0.036226697" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Upper_Arm_Left_With_Motor_1">
+    <visual name="Upper_Arm_Left_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Upper_Arm_Left_With_Motor_1.stl" />
+      </geometry>
+      <material name="Upper_Arm_Left_With_Motor_1-material">
+        <color rgba="1 1 0 1" />
+      </material>
+    </visual>
+    <collision name="Upper_Arm_Left_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Upper_Arm_Left_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.4206185" />
+      <inertia ixx="0.004873982" iyy="0.0024748264" izz="0.0046668764" ixy="4.5246493e-05" ixz="4.5786695e-07" iyz="-1.7211256e-05" />
+      <origin xyz="0.0004188135 0.12301354 -0.037556789" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Upper_Arm_Right_With_Motor_1">
+    <visual name="Upper_Arm_Right_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Upper_Arm_Right_With_Motor_1.stl" />
+      </geometry>
+      <material name="Upper_Arm_Right_With_Motor_1-material">
+        <color rgba="1 0 0 1" />
+      </material>
+    </visual>
+    <collision name="Upper_Arm_Right_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Upper_Arm_Right_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.4206062" />
+      <inertia ixx="0.0048738569" iyy="0.0024747999" izz="0.0046668302" ixy="-4.5207631e-05" ixz="-4.6019908e-07" iyz="-1.7088136e-05" />
+      <origin xyz="-0.00041838839 0.12301419 -0.037555638" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Shin_Left_With_Motor_1">
+    <visual name="Shin_Left_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shin_Left_With_Motor_1.stl" />
+      </geometry>
+      <material name="Shin_Left_With_Motor_1-material">
+        <color rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision name="Shin_Left_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shin_Left_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.144698" />
+      <inertia ixx="0.02221969" iyy="0.0047009911" izz="0.022389914" ixy="0.0008852001" ixz="-0.00017547917" iyz="0.00050931718" />
+      <origin xyz="-0.0063037266 0.13445935 -0.025789317" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Shin_Right_With_Motor_1">
+    <visual name="Shin_Right_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shin_Right_With_Motor_1.stl" />
+      </geometry>
+      <material name="Shin_Right_With_Motor_1-material">
+        <color rgba="0 0 0 1" />
+      </material>
+    </visual>
+    <collision name="Shin_Right_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Shin_Right_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="2.1447344" />
+      <inertia ixx="0.022221782" iyy="0.0047011355" izz="0.022392241" ixy="-0.00088559493" ixz="-0.00017546953" iyz="-0.00050919982" />
+      <origin xyz="-0.0063044435 -0.13446349 -0.025789103" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Mid_Arm_Left_With_Motor_1">
+    <visual name="Mid_Arm_Left_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Mid_Arm_Left_With_Motor_1.stl" />
+      </geometry>
+      <material name="Mid_Arm_Left_With_Motor_1-material">
+        <color rgba="1 0 0.5 1" />
+      </material>
+    </visual>
+    <collision name="Mid_Arm_Left_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Mid_Arm_Left_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.3836228" />
+      <inertia ixx="0.0037704006" iyy="0.0031968208" izz="0.0019299164" ixy="8.8470726e-06" ixz="2.9253201e-05" iyz="0.00039346757" />
+      <origin xyz="-0.00057865772 -0.020473592 0.10053773" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Mid_Arm_Right_With_Motor_1">
+    <visual name="Mid_Arm_Right_With_Motor_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Mid_Arm_Right_With_Motor_1.stl" />
+      </geometry>
+      <material name="Mid_Arm_Right_With_Motor_1-material">
+        <color rgba="0 1 0 1" />
+      </material>
+    </visual>
+    <collision name="Mid_Arm_Right_With_Motor_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Mid_Arm_Right_With_Motor_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="1.3836128" />
+      <inertia ixx="0.0037703052" iyy="0.0031968201" izz="0.0019298479" ixy="-8.7824171e-06" ixz="-2.9265316e-05" iyz="0.00039342821" />
+      <origin xyz="0.00057809952 -0.020474312 0.10053772" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Foot_Left_1">
+    <visual name="Foot_Left_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Foot_Left_1.stl" />
+      </geometry>
+      <material name="Foot_Left_1-material">
+        <color rgba="1 0.5 0 1" />
+      </material>
+    </visual>
+    <inertial>
+      <mass value="1.1291175" />
+      <inertia ixx="0.00092011957" iyy="0.0041822835" izz="0.0036786192" ixy="-9.323857e-05" ixz="3.595906e-11" iyz="9.0390064e-12" />
+      <origin xyz="-0.042736441 -0.046996421 -0.015" rpy="0 0 0" />
+    </inertial>
+    <collision>
+      <origin xyz="-0.045 -0.0276 -0.0475" rpy="0 0 0" />
+      <geometry>
+        <box size="0.18 0.07 0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Foot_Right_1">
+    <visual name="Foot_Right_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Foot_Right_1.stl" />
+      </geometry>
+      <material name="Foot_Right_1-material">
+        <color rgba="0 1 1 1" />
+      </material>
+    </visual>
+    <inertial>
+      <mass value="1.1291175" />
+      <inertia ixx="0.00092011961" iyy="0.0041822837" izz="0.003678619" ixy="9.3238474e-05" ixz="-1.9568187e-13" iyz="-1.40275e-11" />
+      <origin xyz="-0.042736444 0.04699642 -0.015" rpy="0 0 0" />
+    </inertial>
+    <collision>
+      <origin xyz="-0.045 0.0276 -0.0475" rpy="0 0 0" />
+      <geometry>
+        <box size="0.18 0.07 0.03" />
+      </geometry>
+    </collision>
+  </link>
+  <link name="Lower_Arm_Left_1">
+    <visual name="Lower_Arm_Left_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Lower_Arm_Left_1.stl" />
+      </geometry>
+      <material name="Lower_Arm_Left_1-material">
+        <color rgba="1 0 1 1" />
+      </material>
+    </visual>
+    <collision name="Lower_Arm_Left_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Lower_Arm_Left_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.87371197" />
+      <inertia ixx="0.0069058699" iyy="0.002226171" izz="0.0064018675" ixy="-0.00059974845" ixz="2.3753344e-05" iyz="0.00026306425" />
+      <origin xyz="-0.012008746 -0.073623537 -0.022430918" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <link name="Lower_Arm_Right_1">
+    <visual name="Lower_Arm_Right_1_visual">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Lower_Arm_Right_1.stl" />
+      </geometry>
+      <material name="Lower_Arm_Right_1-material">
+        <color rgba="1 0.5 0 1" />
+      </material>
+    </visual>
+    <collision name="Lower_Arm_Right_1_collision">
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+        <mesh filename="meshes/Lower_Arm_Right_1.stl" />
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.87373977" />
+      <inertia ixx="0.0069061775" iyy="0.0022262319" izz="0.0064021619" ixy="0.00059980631" ixz="2.3796793e-05" iyz="-0.0002630916" />
+      <origin xyz="-0.012008903 0.073625083 -0.022430553" rpy="0 0 0" />
+    </inertial>
+  </link>
+  <joint name="dof_hip_pitch_left" type="revolute">
+    <origin xyz="0 -0.15 0.01671951" rpy="1.5707963 0 0" />
+    <parent link="Torso_With_Motors_1" />
+    <child link="Hip_Left_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-1.5707963" upper="2.5307274" />
+  </joint>
+  <joint name="dof_hip_pitch_right" type="revolute">
+    <origin xyz="0 0 0.01671951" rpy="-1.5707963 0 0" />
+    <parent link="Torso_With_Motors_1" />
+    <child link="Hip_Right_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-2.5307274" upper="1.5707963" />
+  </joint>
+  <joint name="dof_shoulder_pitch_left" type="revolute">
+    <origin xyz="0 -0.225 0.53671951" rpy="1.5707963 0 0" />
+    <parent link="Torso_With_Motors_1" />
+    <child link="Shoulder_Left_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-1.3962634" upper="3.1415927" />
+  </joint>
+  <joint name="dof_shoulder_pitch_right" type="revolute">
+    <origin xyz="0 0.075 0.53671951" rpy="-1.5707963 0 0" />
+    <parent link="Torso_With_Motors_1" />
+    <child link="Shoulder_Right_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-3.1415927" upper="1.3962634" />
+  </joint>
+  <joint name="dof_hip_roll_left" type="revolute">
+    <origin xyz="-0.025 0 0.075" rpy="0 -1.5707963 0" />
+    <parent link="Hip_Left_With_Motor_1" />
+    <child link="Femur_Left_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-1.0471976" upper="0.5235988" />
+  </joint>
+  <joint name="dof_hip_roll_right" type="revolute">
+    <origin xyz="-0.025 0 0.075" rpy="3.1415927 1.5707963 0" />
+    <parent link="Hip_Right_With_Motor_1" />
+    <child link="Femur_Right_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-0.5235988" upper="1.0471976" />
+  </joint>
+  <joint name="dof_shoulder_roll_left" type="revolute">
+    <origin xyz="0.0375 0 0.1" rpy="3.1415927 -1.5707963 0" />
+    <parent link="Shoulder_Left_With_Motor_1" />
+    <child link="Upper_Arm_Left_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="0.0" upper="3.1415927" />
+  </joint>
+  <joint name="dof_shoulder_roll_right" type="revolute">
+    <origin xyz="0.0375 0 0.1" rpy="-0 1.5707963 0" />
+    <parent link="Shoulder_Right_With_Motor_1" />
+    <child link="Upper_Arm_Right_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-3.1415927" upper="0.0" />
+  </joint>
+  <joint name="dof_knee_pitch_left" type="revolute">
+    <origin xyz="-0.025 -0.4 -0.05" rpy="3.1415927 1.5707963 0" />
+    <parent link="Femur_Left_With_Motor_1" />
+    <child link="Shin_Left_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="0.0" upper="2.7925268" />
+  </joint>
+  <joint name="dof_knee_pitch_right" type="revolute">
+    <origin xyz="0.025 -0.4 -0.05" rpy="-0 1.5707963 0" />
+    <parent link="Femur_Right_With_Motor_1" />
+    <child link="Shin_Right_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-2.7925268" upper="0.0" />
+  </joint>
+  <joint name="dof_arm_upper_yaw_left" type="revolute">
+    <origin xyz="0 0.175 -0.0375" rpy="-1.5707963 0 0" />
+    <parent link="Upper_Arm_Left_With_Motor_1" />
+    <child link="Mid_Arm_Left_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-1.5707963" upper="1.7453293" />
+  </joint>
+  <joint name="dof_arm_upper_yaw_right" type="revolute">
+    <origin xyz="0 0.175 -0.0375" rpy="-1.5707963 0 0" />
+    <parent link="Upper_Arm_Right_With_Motor_1" />
+    <child link="Mid_Arm_Right_With_Motor_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-1.7453293" upper="1.5707963" />
+  </joint>
+  <joint name="dof_ankle_pitch_left" type="revolute">
+    <origin xyz="-0.025 0.38 -0.055" rpy="3.1415927 0 0" />
+    <parent link="Shin_Left_With_Motor_1" />
+    <child link="Foot_Left_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-1.2217305" upper="0.7853982" />
+  </joint>
+  <joint name="dof_ankle_pitch_right" type="revolute">
+    <origin xyz="-0.025 -0.38 -0.055" rpy="3.1415927 0 0" />
+    <parent link="Shin_Right_With_Motor_1" />
+    <child link="Foot_Right_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-0.7853982" upper="1.2217305" />
+  </joint>
+  <joint name="dof_elbow_pitch_left" type="revolute">
+    <origin xyz="0.025 -0.025 0.115" rpy="-1.5707963 0 -1.5707963" />
+    <parent link="Mid_Arm_Left_With_Motor_1" />
+    <child link="Lower_Arm_Left_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="0.0" upper="2.7925268" />
+  </joint>
+  <joint name="dof_elbow_pitch_right" type="revolute">
+    <origin xyz="-0.025 -0.025 0.115" rpy="1.5707963 0 -1.5707963" />
+    <parent link="Mid_Arm_Right_With_Motor_1" />
+    <child link="Lower_Arm_Right_1" />
+    <axis xyz="0 0 -1" />
+    <limit effort="1" velocity="1" lower="-2.7925268" upper="0.0" />
+  </joint>
+</robot>
