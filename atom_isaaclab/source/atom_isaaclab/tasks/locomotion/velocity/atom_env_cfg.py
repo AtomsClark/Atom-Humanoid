@@ -4,6 +4,7 @@ Inherits from LocomotionVelocityRoughEnvCfg and overrides only Atom-specific par
 Reference: IsaacLab H1 rough/flat env configs.
 """
 
+from isaaclab.envs import ViewerCfg
 from isaaclab.managers import EventTermCfg as EventTerm
 from isaaclab.managers import ObservationTermCfg as ObsTerm
 from isaaclab.managers import RewardTermCfg as RewTerm
@@ -211,6 +212,28 @@ def _apply_play_defaults(cfg):
     cfg.events.push_robot = None
 
 
+def _apply_hero_defaults(cfg):
+    """Shared hero-shot overrides: many envs, random spawn yaw, wide overview camera.
+
+    Atom has no hip yaw DoF, so commanded velocity stays forward-only — the
+    visual variety comes from each env spawning with a different yaw, so a
+    forward command sends robots in every direction from a top-down view.
+    """
+    cfg.scene.num_envs = 64
+    cfg.scene.env_spacing = 3.0
+    cfg.episode_length_s = 40.0
+    cfg.observations.policy.enable_corruption = False
+    cfg.events.base_external_force_torque = None
+    cfg.events.push_robot = None
+    cfg.events.reset_base.params["pose_range"]["yaw"] = (-3.14, 3.14)
+    cfg.viewer = ViewerCfg(
+        eye=(18.0, 18.0, 14.0),
+        lookat=(0.0, 0.0, 1.0),
+        origin_type="world",
+        resolution=(1920, 1080),
+    )
+
+
 @configclass
 class AtomRoughEnvCfg_PLAY(AtomRoughEnvCfg):
     """Play variant: smaller scene, fixed forward command, no randomization."""
@@ -271,6 +294,59 @@ class AtomFlatEnvCfg_PLAY(AtomFlatEnvCfg):
         self.commands.base_velocity.ranges.lin_vel_x = (1.0, 1.0)
         self.commands.base_velocity.ranges.ang_vel_z = (0.0, 0.0)
         self.events.reset_base.params["pose_range"]["yaw"] = (0.0, 0.0)
+
+
+@configclass
+class AtomFlatEnvCfg_HERO(AtomFlatEnvCfg):
+    """Hero-shot variant for flat env: many robots, random yaw spawns, wide camera.
+
+    Command range is biased toward the easier middle of the training distribution
+    (0.3-0.7 m/s) so policies aren't pushed into upper-edge territory they may not
+    have generalized to.
+    """
+
+    def __post_init__(self):
+        super().__post_init__()
+        _apply_hero_defaults(self)
+        self.commands.base_velocity.ranges.lin_vel_x = (0.3, 0.7)
+        self.commands.base_velocity.ranges.ang_vel_z = (0.0, 0.0)
+
+
+@configclass
+class AtomRoughEnvCfg_HERO(AtomRoughEnvCfg):
+    """Hero-shot variant for rough env: many robots spread across varied terrain."""
+
+    def __post_init__(self):
+        super().__post_init__()
+        _apply_hero_defaults(self)
+        self.scene.terrain.max_init_terrain_level = None
+        if self.scene.terrain.terrain_generator is not None:
+            self.scene.terrain.terrain_generator.num_rows = 8
+            self.scene.terrain.terrain_generator.num_cols = 8
+            self.scene.terrain.terrain_generator.curriculum = False
+        self.commands.base_velocity.ranges.lin_vel_x = (0.3, 0.7)
+        self.commands.base_velocity.ranges.ang_vel_z = (0.0, 0.0)
+
+
+@configclass
+class AtomRoughEnvCfg_HERO_SIT(AtomRoughEnvCfg):
+    """Rough hero variant tuned for visualizing the leg-sitting reward exploit.
+
+    Matches the original PLAY review config (5×5 terrain grid, no curriculum,
+    higher commanded speed) so policies trained with leg_contact disabled
+    reproduce the femur-sitting equilibrium they originally exhibited.
+    """
+
+    def __post_init__(self):
+        super().__post_init__()
+        _apply_hero_defaults(self)
+        self.scene.terrain.max_init_terrain_level = None
+        if self.scene.terrain.terrain_generator is not None:
+            self.scene.terrain.terrain_generator.num_rows = 5
+            self.scene.terrain.terrain_generator.num_cols = 5
+            self.scene.terrain.terrain_generator.curriculum = False
+        self.commands.base_velocity.ranges.lin_vel_x = (1.0, 1.0)
+        self.commands.base_velocity.ranges.ang_vel_z = (0.0, 0.0)
 
 
 @configclass
