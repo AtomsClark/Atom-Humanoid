@@ -23,28 +23,42 @@ ROBOT_NAME = "Atom_Humanoid_V0"
 
 
 def next_version_name(base_name):
-    """Find existing *_V* directories and return the next version incremented by 0.1."""
+    """Find existing *_V* directories and return the next version incremented by 0.1.
+
+    Guarantees the returned name does not already exist as a directory, so an
+    in-progress conversion never clobbers a prior output.
+    """
     # Match base prefix up to and including _V, e.g. "Atom_Humanoid_V"
     match = re.match(r"^(.+_V)([\d.]+)$", base_name)
     if not match:
-        return base_name
+        # No recognizable version suffix; fall back to base_name only if free.
+        if not os.path.isdir(base_name):
+            return base_name
+        # Otherwise append a _V0.1-style suffix and bump until unused.
+        candidate_ver = 0.1
+        while os.path.isdir(f"{base_name}_V{candidate_ver:g}"):
+            candidate_ver = round(candidate_ver + 0.1, 1)
+        return f"{base_name}_V{candidate_ver:g}"
+
     prefix = match.group(1)
 
-    existing = glob.glob(f"{prefix}*")
-    if not existing:
-        return base_name
-
     max_ver = -1.0
-    for d in existing:
+    for d in glob.glob(f"{prefix}*"):
         m = re.match(rf"^{re.escape(prefix)}([\d.]+)$", d)
-        if m:
+        if m and os.path.isdir(d):
             max_ver = max(max_ver, float(m.group(1)))
 
-    if max_ver < 0:
+    # If nothing matches the versioned pattern AND base_name itself is free, use it.
+    if max_ver < 0 and not os.path.isdir(base_name):
         return base_name
 
-    new_ver = round(max_ver + 0.1, 1)
-    return f"{prefix}{new_ver:g}"
+    # Otherwise bump past the highest existing version, skipping any that already exist.
+    new_ver = round(max(max_ver, 0.0) + 0.1, 1)
+    candidate = f"{prefix}{new_ver:g}"
+    while os.path.isdir(candidate):
+        new_ver = round(new_ver + 0.1, 1)
+        candidate = f"{prefix}{new_ver:g}"
+    return candidate
 
 
 def main():

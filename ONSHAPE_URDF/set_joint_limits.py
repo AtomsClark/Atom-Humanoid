@@ -65,10 +65,14 @@ def main():
 
     if args.output is None:
         base, ext = os.path.splitext(args.urdf)
-        # Remove existing _limits or _clean suffixes to avoid stacking
-        for suffix in ("_limits", "_clean"):
-            if base.endswith(suffix):
-                base = base[: -len(suffix)]
+        # Strip all trailing _limits / _clean suffixes (in any order, repeated) to avoid stacking
+        stripped = True
+        while stripped:
+            stripped = False
+            for suffix in ("_limits", "_clean"):
+                if base.endswith(suffix):
+                    base = base[: -len(suffix)]
+                    stripped = True
         args.output = f"{base}_clean_limits{ext}"
 
     tree.write(args.output, xml_declaration=True, encoding="unicode")
