@@ -5,7 +5,6 @@ Reference: IsaacLab H1 rough/flat env configs.
 """
 
 from isaaclab.envs import ViewerCfg
-from isaaclab.managers import EventTermCfg as EventTerm
 from isaaclab.managers import ObservationTermCfg as ObsTerm
 from isaaclab.managers import RewardTermCfg as RewTerm
 from isaaclab.managers import SceneEntityCfg, TerminationTermCfg

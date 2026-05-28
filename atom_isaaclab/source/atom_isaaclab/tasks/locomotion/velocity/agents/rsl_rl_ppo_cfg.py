@@ -41,7 +41,7 @@ class AtomRoughPPORunnerCfg(RslRlOnPolicyRunnerCfg):
 
 @configclass
 class AtomFlatPPORunnerCfg(AtomRoughPPORunnerCfg):
-    """PPO config for flat-terrain training (1000 iterations, smaller network)."""
+    """PPO config for flat-terrain training (same architecture as rough for transfer)."""
 
     def __post_init__(self):
         super().__post_init__()
