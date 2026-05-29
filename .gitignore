@@ -43,8 +43,9 @@ Actuators/humanoid-actuator-research.pdf
 # Local-only docs (kept on disk, not published)
 Docs/business-case.md
 
-# Claude Code config (local settings, not project-relevant)
+# Local agent / editor config
 .claude/
+**/CLAUDE.md
 
 # Embedded git repos (RobStride product information clones)
 Actuators/RobStride_Product_Information/
